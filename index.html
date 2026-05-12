@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randy's Portofolio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#2F4156',
+                        teal: '#567C8D',
+                        skyblue: '#C8D9E6',
+                        beige: '#F5EFEB',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .mobile-menu-open { right: 0 !important; }
+            .hamburger-toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+            .hamburger-toggle .line2 { opacity: 0; }
+            .hamburger-toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+
+            .glitch-cyan {
+                mix-blend-mode: lighten;
+                filter: drop-shadow(-8px 0 0 rgba(0, 255, 255, 0.8)) contrast(1.5);
+                animation: glitch-anim-c 3.7s infinite;
+            }
+            .glitch-magenta {
+                mix-blend-mode: lighten;
+                filter: drop-shadow(8px 0 0 rgba(255, 0, 255, 0.8)) contrast(1.5);
+                animation: glitch-anim-m 3.7s infinite;
+            }
+        }
+
+        @keyframes glitch-anim-c {
+            0%, 81% { opacity: 0; clip-path: inset(0 0 100% 0); transform: translate(0); }
+            83% { opacity: 1; clip-path: inset(10% 0 60% 0); transform: translate(-10px, 0); }
+            86% { opacity: 1; clip-path: inset(30% 0 20% 0); transform: translate(15px, 0); }
+            89% { opacity: 1; clip-path: inset(70% 0 5% 0); transform: translate(-15px, 0); }
+            92% { opacity: 1; clip-path: inset(50% 0 40% 0); transform: translate(10px, 0); }
+            95% { opacity: 1; clip-path: inset(15% 0 80% 0); transform: translate(-5px, 0); }
+            98% { opacity: 1; clip-path: inset(80% 0 10% 0); transform: translate(20px, 0); }
+            100% { opacity: 0; clip-path: inset(0 0 100% 0); transform: translate(0); }
+        }
+
+        @keyframes glitch-anim-m {
+            0%, 81% { opacity: 0; clip-path: inset(0 0 100% 0); transform: translate(0); }
+            82% { opacity: 1; clip-path: inset(20% 0 50% 0); transform: translate(15px, 0); }
+            85% { opacity: 1; clip-path: inset(40% 0 10% 0); transform: translate(-10px, 0); }
+            88% { opacity: 1; clip-path: inset(80% 0 2% 0); transform: translate(20px, 0); }
+            91% { opacity: 1; clip-path: inset(10% 0 70% 0); transform: translate(-15px, 0); }
+            94% { opacity: 1; clip-path: inset(60% 0 15% 0); transform: translate(10px, 0); }
+            97% { opacity: 1; clip-path: inset(5% 0 85% 0); transform: translate(-20px, 0); }
+            100% { opacity: 0; clip-path: inset(0 0 100% 0); transform: translate(0); }
+        }
+    </style>
+</head>
+<body class="bg-beige text-navy font-sans overflow-x-hidden leading-relaxed">
+
+    <nav class="fixed top-0 w-full h-[70px] bg-white shadow-sm flex justify-between items-center px-[5%] z-50 transition-all duration-300">
+        <a href="#home" class="text-2xl font-bold text-navy tracking-wide">Randy's Portofolio<span class="text-teal">.</span></a>
+        
+        <ul id="nav-links" class="fixed top-[70px] -right-full w-full bg-white flex flex-col items-center gap-6 py-8 shadow-lg transition-all duration-300 md:static md:flex-row md:w-auto md:bg-transparent md:py-0 md:shadow-none md:gap-8">
+            <li><a href="#home" class="nav-item text-teal font-semibold relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-teal after:-bottom-1 after:left-0 md:after:w-0 hover:after:w-full after:transition-all after:duration-300 transition-colors">Home</a></li>
+            <li><a href="#about" class="nav-item text-navy hover:text-teal font-semibold relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-teal after:-bottom-1 after:left-0 hover:after:w-full after:transition-all after:duration-300 transition-colors">About</a></li>
+            <li><a href="#projects" class="nav-item text-navy hover:text-teal font-semibold relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-teal after:-bottom-1 after:left-0 hover:after:w-full after:transition-all after:duration-300 transition-colors">Projects</a></li>
+            <li><a href="#playground" class="nav-item text-navy hover:text-teal font-semibold relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-teal after:-bottom-1 after:left-0 hover:after:w-full after:transition-all after:duration-300 transition-colors">Play</a></li>
+            <li><a href="#contact" class="nav-item text-navy hover:text-teal font-semibold relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-teal after:-bottom-1 after:left-0 hover:after:w-full after:transition-all after:duration-300 transition-colors">Contact</a></li>
+        </ul>
+
+        <div id="hamburger" class="flex flex-col gap-[5px] cursor-pointer md:hidden">
+            <div class="line1 w-[25px] h-[3px] bg-navy transition-all duration-300"></div>
+            <div class="line2 w-[25px] h-[3px] bg-navy transition-all duration-300"></div>
+            <div class="line3 w-[25px] h-[3px] bg-navy transition-all duration-300"></div>
+        </div>
+    </nav>
+
+    <section id="home" class="min-h-screen bg-navy text-white pt-[70px] pb-8 px-[5%] flex items-center justify-center overflow-hidden">
+        <div class="max-w-[1100px] w-full flex flex-col md:flex-row items-center justify-between gap-12 reveal opacity-0 translate-y-8 transition-all duration-700 ease-out">
+            
+            <div class="flex-1 text-center md:text-left z-20">
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold mb-4 leading-tight">Hi, I'm <br><span class="text-skyblue">Randy Frederick</span></h1>
+                <p class="text-lg md:text-xl text-teal mb-8">Programmer & Ambitious Person</p>
+                <a href="#projects" class="inline-block px-8 py-3 bg-teal text-white font-bold rounded hover:bg-skyblue hover:text-navy hover:-translate-y-1 transition-all duration-300 shadow-lg">View My Work</a>
+            </div>
+
+            <div class="flex-1 flex justify-center items-center w-full relative">
+                <div class="absolute w-[250px] h-[250px] bg-cyan-500 rounded-full blur-[70px] opacity-30 translate-x-12 translate-y-10 animate-pulse z-0"></div>
+                <div class="absolute w-[250px] h-[250px] bg-purple-600 rounded-full blur-[70px] opacity-30 -translate-x-12 -translate-y-10 z-0"></div>
+
+                <div class="relative w-full max-w-[350px] aspect-square rounded-2xl border border-white/20 overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.5)] z-10 bg-navy/50 backdrop-blur-sm group">
+                    <img src="Images/profile.webp" alt="Randy Frederick" class="w-full h-full object-cover relative z-10">
+                    <img src="Images/profile.webp" alt="" class="w-full h-full object-cover absolute top-0 left-0 z-20 glitch-cyan pointer-events-none">
+                    <img src="Images/profile.webp" alt="" class="w-full h-full object-cover absolute top-0 left-0 z-20 glitch-magenta pointer-events-none">
+                    <div class="absolute inset-0 z-30 pointer-events-none opacity-[0.1] bg-[linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0)_50%,rgba(0,0,0,1)_50%,rgba(0,0,0,1))] bg-[length:100%_4px]"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="pt-[120px] pb-12 px-[5%] flex items-center justify-center">
+        <div class="max-w-[1100px] w-full reveal opacity-0 translate-y-8 transition-all duration-700 ease-out">
+            <h2 class="text-teal text-3xl md:text-4xl font-bold mb-6 relative inline-block after:content-[''] after:absolute after:w-3/5 after:h-1 after:bg-skyblue after:-bottom-2 after:left-0 after:rounded-full">About Me</h2>
+            
+            <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-navy text-lg mb-6">
+                <p>I am a 6th-semester Informatics student with a strong aptitude for adapting to diverse professional environments. A collaborative team player, I am equally effective at leading initiatives and following strategic direction. I take full ownership of my tasks and am committed to delivering results with a high level of accountability.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-navy text-xl font-bold mb-4 border-b-2 border-beige pb-2">Education</h3>
+                    <div class="mb-5 last:mb-0">
+                        <h4 class="text-teal font-semibold text-lg">Bunda Mulia University</h4>
+                        <p class="text-sm text-navy font-bold opacity-70 mb-1">2023 - 2027</p>
+                        <p class="text-gray-600">Major: Informatics<br>GPA: 3.93/4.00</p>
+                    </div>
+                    <div>
+                        <h4 class="text-teal font-semibold text-lg">Mutiara Bangsa School</h4>
+                        <p class="text-sm text-navy font-bold opacity-70 mb-1">2010 - 2023</p>
+                        <p class="text-gray-600">Natural Science Major<br>Average Score: 85.64/100</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-navy text-xl font-bold mb-4 border-b-2 border-beige pb-2">Work Experience</h3>
+                    <div class="mb-5">
+                        <h4 class="text-teal font-semibold text-lg">Adobe Stock Contributor</h4>
+                        <p class="text-sm text-navy font-bold opacity-70 mb-1">August 2025 - Present</p>
+                        <p class="text-gray-600">Analyzing emerging industry trends.</p>
+                    </div>
+                    <div class="mb-5">
+                        <h4 class="text-teal font-semibold text-lg">Online Shop Admin</h4>
+                        <p class="text-sm text-navy font-bold opacity-70 mb-1">June 2022 - Present</p>
+                        <p class="text-gray-600">Handling product management and technical workflows.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-teal font-semibold text-lg">Private Tutor</h4>
+                        <p class="text-sm text-navy font-bold opacity-70 mb-1">March - June 2023</p>
+                        <p class="text-gray-600">Provided personalized instruction for 9th-grade students.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="pt-12 pb-12 px-[5%] flex items-center justify-center">
+        <div class="max-w-[1100px] w-full reveal opacity-0 translate-y-8 transition-all duration-700 ease-out">
+            <h2 class="text-teal text-3xl md:text-4xl font-bold mb-6 relative inline-block after:content-[''] after:absolute after:w-3/5 after:h-1 after:bg-skyblue after:-bottom-2 after:left-0 after:rounded-full">Selected Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-2">
+                
+                <a href="project1.html" class="block bg-white rounded-lg overflow-hidden shadow-sm border-t-4 border-teal hover:-translate-y-2 hover:shadow-[0_10px_25px_rgba(86,124,141,0.2)] transition-all duration-300">
+                    <div class="p-6">
+                        <h3 class="text-navy text-xl font-bold mb-1 group-hover:text-teal transition-colors">Mental Health App &rarr;</h3>
+                        <p class="text-teal font-bold text-sm mb-3">UI/UX Designer</p>
+                        <p class="text-gray-600 text-sm">Designed a 12-module mental health app in Figma, using UX audits to remove friction and streamline the user journey. The result is an intuitive, user-centric interface tailored for managing diverse psychological conditions effectively.</p>
+                    </div>
+                </a>
+
+                <a href="project2.html" class="block bg-white rounded-lg overflow-hidden shadow-sm border-t-4 border-teal hover:-translate-y-2 hover:shadow-[0_10px_25px_rgba(86,124,141,0.2)] transition-all duration-300">
+                    <div class="p-6">
+                        <h3 class="text-navy text-xl font-bold mb-1 group-hover:text-teal transition-colors">Gym Membership System &rarr;</h3>
+                        <p class="text-teal font-bold text-sm mb-3">Full-Stack Developer</p>
+                        <p class="text-gray-600 text-sm">Developed a full-stack gym management app using Flutter and Firebase, implementing real-time data syncing and secure authentication. I engineered the end-to-end architecture to digitize registration and streamline membership workflows.</p>
+                    </div>
+                </a>
+
+                <a href="project3.html" class="block bg-white rounded-lg overflow-hidden shadow-sm border-t-4 border-teal hover:-translate-y-2 hover:shadow-[0_10px_25px_rgba(86,124,141,0.2)] transition-all duration-300">
+                    <div class="p-6">
+                        <h3 class="text-navy text-xl font-bold mb-1 group-hover:text-teal transition-colors">Sentiment Analysis Model &rarr;</h3>
+                        <p class="text-teal font-bold text-sm mb-3">Machine Learning Developer</p>
+                        <p class="text-gray-600 text-sm">Developed an NLP sentiment classifier using Logistic Regression to accurately categorize user feedback. By optimizing data preprocessing and feature engineering, I achieved high precision in monitoring public sentiment trends across large-scale datasets.</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="playground" class="py-12 px-[5%] flex flex-col items-center justify-center">
+        <div class="max-w-[1100px] w-full reveal opacity-0 translate-y-8 transition-all duration-700 ease-out">
+            <div class="text-center mb-6">
+                <h2 class="text-teal text-3xl md:text-4xl font-bold mb-2 inline-block relative after:content-[''] after:absolute after:w-3/5 after:h-1 after:bg-skyblue after:-bottom-2 after:left-1/5 after:rounded-full">Take a Break!</h2>
+                <p class="text-lg text-navy mt-4">While you here, could you please feed orange, thanks~ 🐟</p>
+            </div>
+            
+            <div id="cat-container" class="relative w-full h-[400px] bg-white rounded-xl shadow-sm border-2 border-dashed border-teal overflow-hidden cursor-crosshair">
+                <div id="orange-cat" class="absolute top-0 left-0 text-5xl origin-center pointer-events-none select-none z-10" style="transform: translate(-50%, -50%);">🐈</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-[5%] bg-white flex items-center justify-center">
+        <div class="max-w-[1100px] w-full reveal opacity-0 translate-y-8 transition-all duration-700 ease-out">
+            <div class="bg-beige p-10 md:p-12 rounded-xl max-w-2xl mx-auto text-center shadow-sm">
+                <h2 class="text-teal text-3xl md:text-4xl font-bold mb-5 relative inline-block after:content-[''] after:absolute after:w-3/5 after:h-1 after:bg-skyblue after:-bottom-2 after:left-1/5 after:rounded-full">Let's Connect</h2>
+                <p class="text-lg text-navy mb-6">I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.</p>
+                <div class="flex flex-col gap-4">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=randy021104@gmail.com" target="_blank" class="text-lg text-white bg-navy py-3 px-6 rounded-lg font-bold hover:bg-teal hover:scale-[1.02] transition-all duration-300 shadow-md">Email Me: randy021104@gmail.com</a>
+                    <a href="https://wa.me/6289504317245" target="_blank" class="text-lg text-white bg-navy py-3 px-6 rounded-lg font-bold hover:bg-teal hover:scale-[1.02] transition-all duration-300 shadow-md">WhatsApp Me: +62 895-0431-7245</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-navy text-skyblue text-center py-6 text-sm">
+        <p>&copy; 2026 Randy Frederick Leonardy. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // --- Navigation Scroll centering logic ---
+        const navLinksGroup = document.getElementById('nav-links');
+        const hamburgerBtn = document.getElementById('hamburger');
+        const allNavLinks = document.querySelectorAll('.nav-item');
+        const allSections = document.querySelectorAll('section');
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    navLinksGroup.classList.remove('mobile-menu-open');
+                    hamburgerBtn.classList.remove('hamburger-toggle');
+                }
+            });
+        });
+
+        hamburgerBtn.addEventListener('click', () => {
+            navLinksGroup.classList.toggle('mobile-menu-open');
+            hamburgerBtn.classList.toggle('hamburger-toggle');
+        });
+
+        // --- Scroll Reveal Animation ---
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.remove('opacity-0', 'translate-y-8');
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                observer.unobserve(entry.target);
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+        // --- Active Navigation Link Updating ---
+        window.addEventListener('scroll', () => {
+            let current = '';
+            allSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= (sectionTop - window.innerHeight / 2)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            allNavLinks.forEach(item => {
+                item.classList.remove('text-teal', 'after:w-full');
+                item.classList.add('text-navy', 'after:w-0');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.remove('text-navy', 'after:w-0');
+                    item.classList.add('text-teal', 'after:w-full');
+                }
+            });
+        });
+
+        // --- Interactive Orange Cat Logic ---
+        const catContainer = document.getElementById('cat-container');
+        const cat = document.getElementById('orange-cat');
+        
+        let isFeeding = false;
+        let foodElement = null;
+        
+        // Initial center position
+        let catX = 200; 
+        let catY = 200;
+        let targetX = 200;
+        let targetY = 200;
+
+        // Initialize center on load
+        window.addEventListener('load', () => {
+            catX = catContainer.offsetWidth / 2;
+            catY = catContainer.offsetHeight / 2;
+            targetX = catX;
+            targetY = catY;
+            // Position the cat immediately
+            cat.style.transform = `translate(${catX}px, ${catY}px) translate(-50%, -50%)`;
+        });
+
+        catContainer.addEventListener('click', (e) => {
+            if (isFeeding) return; // Only one fish at a time
+            
+            const rect = catContainer.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const clickY = e.clientY - rect.top;
+
+            // Spawn fish
+            foodElement = document.createElement('div');
+            foodElement.innerHTML = '🐟';
+            foodElement.className = 'absolute text-3xl pointer-events-none select-none';
+            foodElement.style.left = clickX + 'px';
+            foodElement.style.top = clickY + 'px';
+            foodElement.style.transform = 'translate(-50%, -50%)';
+            catContainer.appendChild(foodElement);
+
+            isFeeding = true;
+            targetX = clickX;
+            targetY = clickY;
+        });
+
+        function animateCat() {
+            const dx = targetX - catX;
+            const dy = targetY - catY;
+            
+            // Only move and update transform if there is a meaningful distance to travel
+            if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
+                // Adjust speed here
+                catX += dx * 0.05;
+                catY += dy * 0.05;
+
+                // FIXED: Cat naturally faces left. 
+                // So if moving right (dx > 0), we scaleX(-1) to flip it.
+                // If moving left (dx < 0), we keep it scaleX(1).
+                let flip = dx < 0 ? 'scaleX(1)' : 'scaleX(-1)';
+
+                // Apply transform
+                cat.style.transform = `translate(${catX}px, ${catY}px) translate(-50%, -50%) ${flip}`;
+            }
+
+            // Check if cat reached the food
+            if (isFeeding && Math.abs(dx) < 15 && Math.abs(dy) < 15) {
+                if (foodElement) {
+                    foodElement.remove();
+                    foodElement = null;
+                    
+                    // Spawn little heart
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '❤️';
+                    heart.className = 'absolute text-2xl transition-all duration-1000 ease-out pointer-events-none select-none z-0';
+                    heart.style.left = catX + 'px';
+                    heart.style.top = (catY - 40) + 'px';
+                    heart.style.transform = 'translate(-50%, -50%)';
+                    catContainer.appendChild(heart);
+                    
+                    // Float up and fade
+                    setTimeout(() => {
+                        heart.style.transform = 'translate(-50%, -100px)';
+                        heart.style.opacity = '0';
+                    }, 50);
+
+                    setTimeout(() => heart.remove(), 1050);
+                }
+                isFeeding = false;
+            }
+
+            requestAnimationFrame(animateCat);
+        }
+        
+        // Start animation loop
+        animateCat();
+    </script>
+</body>
+</html>

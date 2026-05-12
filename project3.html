@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Model - Randy's Portofolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#2F4156',
+                        teal: '#567C8D',
+                        skyblue: '#C8D9E6',
+                        beige: '#F5EFEB',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-beige text-navy font-sans leading-relaxed">
+
+    <nav class="fixed top-0 w-full h-[70px] bg-white shadow-sm flex items-center px-[5%] z-50">
+        <a href="index.html#projects" class="font-bold text-teal hover:text-navy transition-colors flex items-center gap-2">
+            <span>&larr;</span> Back to Portfolio
+        </a>
+    </nav>
+
+    <header class="pt-[140px] pb-12 px-[5%] bg-navy text-white text-center">
+        <div class="max-w-[800px] mx-auto reveal opacity-0 translate-y-8 transition-all duration-700 ease-out">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Sentiment Analysis Model</h1>
+            <p class="text-xl text-skyblue font-semibold">Role: Machine Learning Developer</p>
+        </div>
+    </header>
+
+    <main class="py-16 px-[5%]">
+        <div class="max-w-[800px] mx-auto bg-white p-8 md:p-12 rounded-xl shadow-sm border-t-4 border-teal reveal opacity-0 translate-y-8 transition-all duration-700 delay-200 ease-out">
+            <h2 class="text-2xl font-bold text-teal mb-4 border-b-2 border-beige pb-2">Overview</h2>
+            <p class="mb-8 text-gray-700 text-lg">
+                I built a Natural Language Processing (NLP) model aimed at classifying user feedback into distinct emotional sentiments. This tool is vital for understanding public perception and monitoring brand health across large-scale datasets.
+            </p>
+
+            <h2 class="text-2xl font-bold text-teal mb-4 border-b-2 border-beige pb-2">Methodology</h2>
+            <ul class="list-disc list-inside mb-8 text-gray-700 text-lg space-y-2">
+                <li><strong>Data Preprocessing:</strong> Cleaned, tokenized, and normalized massive datasets to prepare text for machine parsing.</li>
+                <li><strong>Feature Engineering:</strong> Extracted meaningful features from raw text using techniques like TF-IDF and word embeddings.</li>
+                <li><strong>Algorithm:</strong> Deployed a Logistic Regression classifier, balancing computational efficiency with high accuracy.</li>
+                <li><strong>Evaluation:</strong> Tested the model against validation datasets to minimize false positives/negatives.</li>
+            </ul>
+
+            <h2 class="text-2xl font-bold text-teal mb-4 border-b-2 border-beige pb-2">The Result</h2>
+            <p class="text-gray-700 text-lg">
+                The final model achieved high precision and recall scores. By integrating this model, the team was able to automate the categorization of user feedback, drastically reducing manual reading time and allowing for rapid responses to shifting public trends.
+            </p>
+        </div>
+    </main>
+
+    <footer class="bg-navy text-skyblue text-center py-6 text-sm">
+        <p>&copy; 2026 Randy Frederick Leonardy.</p>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.remove('opacity-0', 'translate-y-8');
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                observer.unobserve(entry.target);
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>

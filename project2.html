@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Membership System - Randy's Portofolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#2F4156',
+                        teal: '#567C8D',
+                        skyblue: '#C8D9E6',
+                        beige: '#F5EFEB',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-beige text-navy font-sans leading-relaxed">
+
+    <nav class="fixed top-0 w-full h-[70px] bg-white shadow-sm flex items-center px-[5%] z-50">
+        <a href="index.html#projects" class="font-bold text-teal hover:text-navy transition-colors flex items-center gap-2">
+            <span>&larr;</span> Back to Portfolio
+        </a>
+    </nav>
+
+    <header class="pt-[140px] pb-12 px-[5%] bg-navy text-white text-center">
+        <div class="max-w-[800px] mx-auto reveal opacity-0 translate-y-8 transition-all duration-700 ease-out">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Gym Membership System</h1>
+            <p class="text-xl text-skyblue font-semibold">Role: Full-Stack Developer</p>
+        </div>
+    </header>
+
+    <main class="py-16 px-[5%]">
+        <div class="max-w-[800px] mx-auto bg-white p-8 md:p-12 rounded-xl shadow-sm border-t-4 border-teal reveal opacity-0 translate-y-8 transition-all duration-700 delay-200 ease-out">
+            <h2 class="text-2xl font-bold text-teal mb-4 border-b-2 border-beige pb-2">Overview</h2>
+            <p class="mb-8 text-gray-700 text-lg">
+                I developed a robust, full-stack application designed to modernize and digitize operations for a gym facility. The app handles everything from user registration to complex membership workflows.
+            </p>
+
+            <h2 class="text-2xl font-bold text-teal mb-4 border-b-2 border-beige pb-2">Technical Stack & Execution</h2>
+            <ul class="list-disc list-inside mb-8 text-gray-700 text-lg space-y-2">
+                <li><strong>Frontend:</strong> Built with Flutter to provide a seamless, native-like experience across mobile platforms.</li>
+                <li><strong>Backend:</strong> Leveraged Firebase for real-time database management and cloud functions.</li>
+                <li><strong>Security:</strong> Implemented secure authentication protocols to protect user data and financial records.</li>
+                <li><strong>Architecture:</strong> Engineered the end-to-end architecture to ensure high performance and scalability.</li>
+            </ul>
+
+            <h2 class="text-2xl font-bold text-teal mb-4 border-b-2 border-beige pb-2">The Impact</h2>
+            <p class="text-gray-700 text-lg">
+                The application successfully digitized the registration process, saving administrative hours. Real-time data syncing ensures that both staff and gym members have up-to-the-minute information regarding classes, payments, and membership status.
+            </p>
+        </div>
+    </main>
+
+    <footer class="bg-navy text-skyblue text-center py-6 text-sm">
+        <p>&copy; 2026 Randy Frederick Leonardy.</p>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.remove('opacity-0', 'translate-y-8');
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                observer.unobserve(entry.target);
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
